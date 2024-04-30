@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 
-namespace c_ApiLayout
+namespace scrumBackend
 {
     public class Startup
     {
@@ -33,13 +33,15 @@ namespace c_ApiLayout
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173"));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "C# API Layout"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scrum Backend"));
 
             app.UseForwardedHeaders();
 
