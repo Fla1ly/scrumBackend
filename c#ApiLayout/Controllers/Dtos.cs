@@ -1,7 +1,10 @@
 ﻿public class UserDto
 {
-    public required string name { get; set; }
-    public string email { get; set; }
-
-
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string UserID { get; }
+    public UserDto()
+    {
+        UserID = Guid.NewGuid().ToString();
+    }
 }
